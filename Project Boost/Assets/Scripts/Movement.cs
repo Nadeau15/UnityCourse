@@ -1,21 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-  Rigidbody rb;
   [SerializeField] float thrustSpeed = 1000f;
   [SerializeField] float rotationSpeed = 1000f;
+  [SerializeField] AudioClip thrusters;
+  [SerializeField] public ParticleSystem mainThrusterParticles;
+  [SerializeField] public ParticleSystem leftThrusterParticles;
+  [SerializeField] public ParticleSystem rightThrusterParticles; 
 
+  Rigidbody rb;
+  AudioSource audioSource;
 
-  // Start is called before the first frame update
   void Start()
   {
     rb = GetComponent<Rigidbody>();
+    audioSource = GetComponent<AudioSource>();
   }
 
-  // Update is called once per frame
   void Update()
   {
     ProcessInput();
@@ -29,14 +31,33 @@ public class Movement : MonoBehaviour
   void ProcessThrust() {
     if (Input.GetKey(KeyCode.Space)) {
       rb.AddRelativeForce(Vector3.up * thrustSpeed * Time.deltaTime);
+      if (!audioSource.isPlaying) {
+        audioSource.PlayOneShot(thrusters);
+      }
+
+      if (!mainThrusterParticles.isPlaying) {
+        mainThrusterParticles.Play();
+      }
+    } else {
+      mainThrusterParticles.Stop();
+      audioSource.Stop();
     }
   }
 
   void ProcessRotation() {
     if (Input.GetKey(KeyCode.A)) {
       ApplyRotation(Vector3.forward);
+      if (!rightThrusterParticles.isPlaying) {
+        rightThrusterParticles.Play();
+      }
     } else if (Input.GetKey(KeyCode.D)) {
       ApplyRotation(-Vector3.forward);
+      if (!leftThrusterParticles.isPlaying) {
+        leftThrusterParticles.Play();
+      }
+    } else {
+      rightThrusterParticles.Stop();
+      leftThrusterParticles.Stop();
     }
   }
 
