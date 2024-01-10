@@ -30,39 +30,59 @@ public class Movement : MonoBehaviour
 
   void ProcessThrust() {
     if (Input.GetKey(KeyCode.Space)) {
-      rb.AddRelativeForce(Vector3.up * thrustSpeed * Time.deltaTime);
-      if (!audioSource.isPlaying) {
-        audioSource.PlayOneShot(thrusters);
-      }
-
-      if (!mainThrusterParticles.isPlaying) {
-        mainThrusterParticles.Play();
-      }
+      StartThrusting();
     } else {
-      mainThrusterParticles.Stop();
-      audioSource.Stop();
+      StopThrusting();
     }
   }
 
   void ProcessRotation() {
     if (Input.GetKey(KeyCode.A)) {
-      ApplyRotation(Vector3.forward);
-      if (!rightThrusterParticles.isPlaying) {
-        rightThrusterParticles.Play();
-      }
+      RotateLeft();
     } else if (Input.GetKey(KeyCode.D)) {
-      ApplyRotation(-Vector3.forward);
-      if (!leftThrusterParticles.isPlaying) {
-        leftThrusterParticles.Play();
-      }
+      RotateRight();
     } else {
-      rightThrusterParticles.Stop();
-      leftThrusterParticles.Stop();
+      StopRotation();
     }
   }
 
-  void ApplyRotation(Vector3 direction)
-  {
+  void StartThrusting() {
+    rb.AddRelativeForce(Vector3.up * thrustSpeed * Time.deltaTime);
+    if (!audioSource.isPlaying) {
+      audioSource.PlayOneShot(thrusters);
+    }
+
+    if (!mainThrusterParticles.isPlaying) {
+      mainThrusterParticles.Play();
+    }
+  }
+
+  void StopThrusting() {
+    mainThrusterParticles.Stop();
+    audioSource.Stop();
+  }
+
+  void RotateRight() {
+    ApplyRotation(-Vector3.forward);
+    if (!leftThrusterParticles.isPlaying) {
+      leftThrusterParticles.Play();
+    }
+  }
+
+  void RotateLeft() {
+    ApplyRotation(Vector3.forward);
+    if (!rightThrusterParticles.isPlaying)
+    {
+      rightThrusterParticles.Play();
+    }
+  }
+
+  void StopRotation() {
+    rightThrusterParticles.Stop();
+    leftThrusterParticles.Stop();
+  }
+
+  void ApplyRotation(Vector3 direction) {
     // Freezing rotation in physic system to manually rotate the rocket 
     ToggleFreezeRotation();
     transform.Rotate(direction * rotationSpeed * Time.deltaTime);

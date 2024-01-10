@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -14,14 +15,19 @@ public class CollisionHandler : MonoBehaviour
   AudioSource audioSource;
 
   bool isTransitioning = false;
+  bool collisionsEnabled = true;
 
   void Start() {
     movement = GetComponent<Movement>();
     audioSource = GetComponent<AudioSource>();
   }
 
+  void Update() {
+    RespondToDebugKeys();
+  }
+
   void OnCollisionEnter(Collision other) {
-    if (!isTransitioning) {
+    if (!isTransitioning && collisionsEnabled) {
       switch(other.gameObject.tag) {
         case "Friendly":
           Debug.Log("Friendly case");
@@ -34,6 +40,19 @@ public class CollisionHandler : MonoBehaviour
           break;
       }
     }
+  }
+
+  void RespondToDebugKeys() {
+    if (Input.GetKeyDown(KeyCode.L)) {
+      LoadNextLevel();
+    }
+    else if (Input.GetKeyDown(KeyCode.C)) {
+      ToggleCollider();
+    }
+  }
+
+  void ToggleCollider() {
+    collisionsEnabled = !collisionsEnabled;
   }
 
   void StartCrashSequence() {
