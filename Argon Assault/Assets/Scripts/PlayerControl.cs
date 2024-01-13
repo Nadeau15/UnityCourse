@@ -14,6 +14,8 @@ public class PlayerControl : MonoBehaviour
   [SerializeField] float controlPitchFactor = -250f;
   [SerializeField] float controlRollFactor = -250f;
 
+  [SerializeField] GameObject[] lasers;
+
   void Awake()
   {
     input = new CustomInput();
@@ -24,13 +26,19 @@ public class PlayerControl : MonoBehaviour
     // Subscribe to function;
     input.Player.Movement.performed += OnMovementPerformed;
     input.Player.Movement.canceled += OnMovementCanceled;
+
+    input.Player.Fire.performed += OnFirePerformed;
+    input.Player.Fire.canceled += OnFireCanceled;
   }
 
   void OnDisable() {
     input.Disable();
     // Unsubscribe
     input.Player.Movement.performed -= OnMovementPerformed;
-    input.Player.Movement.canceled += OnMovementCanceled;
+    input.Player.Movement.canceled -= OnMovementCanceled;
+
+    input.Player.Fire.performed -= OnFirePerformed;
+    input.Player.Fire.canceled -= OnFireCanceled;
   }
 
   void OnMovementPerformed(InputAction.CallbackContext value) {
@@ -39,6 +47,14 @@ public class PlayerControl : MonoBehaviour
 
   void OnMovementCanceled(InputAction.CallbackContext value) {
     movement = Vector2.zero;
+  }
+
+  void OnFirePerformed(InputAction.CallbackContext value) {
+    ActivateLasers(true);
+  }
+
+  void OnFireCanceled(InputAction.CallbackContext value) {
+    ActivateLasers(false);
   }
 
   void Update() {
@@ -69,5 +85,12 @@ public class PlayerControl : MonoBehaviour
     float clampedYPos = Mathf.Clamp(newYPos, yMin, yMax);
 
     transform.localPosition = new Vector3(clampedXPos, clampedYPos, localPositionZ);
+  }
+
+  void ActivateLasers(bool isActive) {
+    foreach (var laser in lasers) {
+      var emissionModule = laser.GetComponent<ParticleSystem>().emission;
+      emissionModule.enabled = isActive;
+    }
   }
 }
