@@ -5,15 +5,25 @@ public class PlayerControl : MonoBehaviour
 {
   CustomInput input = null;
   Vector2 movement = Vector2.zero;
-  [SerializeField] float movSpeed = 15f;
+
+  [Header("General Setup Settings")]
+  [Tooltip("How fast ship moves based on player input")] [SerializeField] float movSpeed = 15f;
+
+  [Header("Movement range on screen")]
   [SerializeField] float xRange = 32f;
   [SerializeField] float yMax = 14f;
   [SerializeField] float yMin = -6f;
+
+  [Header("Screen position based tuning")]
   [SerializeField] float positionPitchFactor = -1f;
   [SerializeField] float positionYawFactor = 1f;
+
+  [Header("Player input based tuning")]
+
   [SerializeField] float controlPitchFactor = -250f;
   [SerializeField] float controlRollFactor = -250f;
 
+  [Header("Laser gun array")]
   [SerializeField] GameObject[] lasers;
 
   void Awake()
