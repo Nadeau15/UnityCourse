@@ -21,11 +21,14 @@ public class CollisionHandler : MonoBehaviour
 
   void StartCrashSequence() {
     if (!crashTransitionInProgress) {
+      GameObject vfx = Instantiate(crashParticles, transform.position, Quaternion.identity);
+      AudioSource audioSource = vfx.GetComponent<AudioSource>();
+
       playerControl.enabled = false;
       crashTransitionInProgress = true;
       gameObject.SetActive(false);
-      GameObject vfx = Instantiate(crashParticles, transform.position, Quaternion.identity);
       vfx.transform.parent = parent;
+      audioSource.enabled = true;
       Invoke("ReloadLevel", reloadDelay);
     }
   }
