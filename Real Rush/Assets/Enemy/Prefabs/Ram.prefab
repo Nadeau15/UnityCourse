@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: -4659685371665462418}
   - component: {fileID: 4492012597151233458}
   - component: {fileID: 5927422575822626746}
+  - component: {fileID: -1261261222072238087}
   m_Layer: 0
   m_Name: Ram
   m_TagString: Enemy
@@ -165,4 +166,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c00bb1a56baea24ab634fd8e909f820, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHitPoints: 3
+  maxHitPoints: 2
+  difficultyRamp: 2
+--- !u!114 &-1261261222072238087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5040643765344069697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e12e5151c891d4146a1ced3999f2dd00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goldReward: 25
+  goldPenalty: 25
