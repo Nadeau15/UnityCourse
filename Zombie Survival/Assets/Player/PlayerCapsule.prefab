@@ -451,6 +451,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7653624310334908380, guid: a6d0754d440e3664fb2b639b2a7d08ca, type: 3}
+      propertyPath: sandHitParticleFX
+      value: 
+      objectReference: {fileID: 1312255355084822, guid: bca9020d2c9c915448fb5263a425faf4, type: 3}
+    - target: {fileID: 7653624310334908380, guid: a6d0754d440e3664fb2b639b2a7d08ca, type: 3}
+      propertyPath: woodHitParticleFX
+      value: 
+      objectReference: {fileID: 1031560401822814, guid: 3c0b5f221ea995442b9d11dc526de1c0, type: 3}
+    - target: {fileID: 7653624310334908380, guid: a6d0754d440e3664fb2b639b2a7d08ca, type: 3}
+      propertyPath: fleshHitParticleFX
+      value: 
+      objectReference: {fileID: 1096893136476370, guid: 24b82347924701148a13c746edfb6b22, type: 3}
+    - target: {fileID: 7653624310334908380, guid: a6d0754d440e3664fb2b639b2a7d08ca, type: 3}
+      propertyPath: metalHitParticleFX
+      value: 
+      objectReference: {fileID: 1892351807075712, guid: 44be68b4fc4366142a9cd1ae1f761ea4, type: 3}
+    - target: {fileID: 7653624310334908380, guid: a6d0754d440e3664fb2b639b2a7d08ca, type: 3}
+      propertyPath: stoneHitParticleFX
+      value: 
+      objectReference: {fileID: 1341869769842038, guid: 8b7a1ffda5bb7474b8fae646c45ce7b4, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -541,7 +561,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.30299997
+      value: 0.269
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalRotation.w
