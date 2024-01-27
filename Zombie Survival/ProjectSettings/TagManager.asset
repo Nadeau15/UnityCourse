@@ -8,6 +8,12 @@ TagManager:
   - EnemyHead
   - EnemyBody
   - Enemy
+  - FxTemporaire
+  - WoodSurface
+  - StoneSurface
+  - MetalSurface
+  - SandSurface
+  - FleshSurface
   layers:
   - Default
   - TransparentFX

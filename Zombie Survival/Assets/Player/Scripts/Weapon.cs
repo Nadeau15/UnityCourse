@@ -56,27 +56,37 @@ public class Weapon : MonoBehaviour
   }
 
   void ProcessHitParticles(RaycastHit targetHit) {
-    Material targetMaterial = targetHit.transform.GetComponent<Renderer>().material;
-    GameObject impact = new GameObject();
+    string targetMaterial = targetHit.transform.GetComponent<Renderer>().material.name.Replace(" (Instance)", "");
+    GameObject impact = null;
 
-    switch(targetMaterial.name) {
+    switch(targetMaterial) {
       case "WoodSurface":
         impact = Instantiate(woodHitParticleFX, targetHit.point, Quaternion.LookRotation(targetHit.normal));
+        Debug.Log(woodHitParticleFX.name);
         break;
       case "MetalSurface":
         impact = Instantiate(metalHitParticleFX, targetHit.point, Quaternion.LookRotation(targetHit.normal));
+        Debug.Log(metalHitParticleFX.name);
         break;
       case "SandSurface":
         impact = Instantiate(sandHitParticleFX, targetHit.point, Quaternion.LookRotation(targetHit.normal));
+        Debug.Log(sandHitParticleFX.name);
         break;
       case "FleshSurface":
         impact = Instantiate(fleshHitParticleFX, targetHit.point, Quaternion.LookRotation(targetHit.normal));
+        Debug.Log(fleshHitParticleFX.name);
         break;
       case "StoneSurface":
         impact = Instantiate(stoneHitParticleFX, targetHit.point, Quaternion.LookRotation(targetHit.normal));
+        Debug.Log(stoneHitParticleFX.name);
+        break;
+      default:
+        Debug.Log("No case Material for: " + targetMaterial);
         break;
     }
 
-    Destroy(impact, 1);
+    if (impact != null) {
+      Destroy(impact, 1);
+    }
   }
 }
