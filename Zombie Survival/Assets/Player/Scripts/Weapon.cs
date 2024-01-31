@@ -86,7 +86,8 @@ public class Weapon : MonoBehaviour
     }
 
     if (impact != null) {
-      Destroy(impact, 1);
+      impact.transform.SetParent(targetHit.transform);
+      Destroy(impact, 5);
     }
   }
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -668,6 +668,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 8345070700331616358, guid: 09aade0ecefd01e4b8f7661acf64f5c2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 26bc8648a85c6b041a5d5b00ca61062b, type: 2}
     - target: {fileID: 8345070700331616361, guid: 09aade0ecefd01e4b8f7661acf64f5c2, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
@@ -957,7 +961,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 972667568622849438, guid: 3404a31ef95fd2149bb708179161721a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.23
+      value: 13.46
       objectReference: {fileID: 0}
     - target: {fileID: 972667568622849438, guid: 3404a31ef95fd2149bb708179161721a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -965,7 +969,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 972667568622849438, guid: 3404a31ef95fd2149bb708179161721a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.88
       objectReference: {fileID: 0}
     - target: {fileID: 972667568622849438, guid: 3404a31ef95fd2149bb708179161721a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1003,14 +1007,6 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 8997996947572741846}
-    - target: {fileID: 7903628677792181193, guid: 3404a31ef95fd2149bb708179161721a, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 72bc6ef93dd24b24a92daaf12577d9f1, type: 2}
-    - target: {fileID: 8924062693580429861, guid: 3404a31ef95fd2149bb708179161721a, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 72bc6ef93dd24b24a92daaf12577d9f1, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1084,6 +1080,26 @@ PrefabInstance:
       propertyPath: FPCamera
       value: 
       objectReference: {fileID: 1214888126}
+    - target: {fileID: 7593149073975348146, guid: f1694e0c69f82ac4ca87ac6b1392e96b, type: 3}
+      propertyPath: sandHitParticleFX
+      value: 
+      objectReference: {fileID: 5379503862906819346, guid: 5b52c479df16d1045b3e46cf2f4aa715, type: 3}
+    - target: {fileID: 7593149073975348146, guid: f1694e0c69f82ac4ca87ac6b1392e96b, type: 3}
+      propertyPath: woodHitParticleFX
+      value: 
+      objectReference: {fileID: 2299980234402337370, guid: bda64dbfc5f17f04c82d7758b1cd1cad, type: 3}
+    - target: {fileID: 7593149073975348146, guid: f1694e0c69f82ac4ca87ac6b1392e96b, type: 3}
+      propertyPath: fleshHitParticleFX
+      value: 
+      objectReference: {fileID: 1795255212232503504, guid: 4eb35497ed2c9af478ceb0ea7c92b206, type: 3}
+    - target: {fileID: 7593149073975348146, guid: f1694e0c69f82ac4ca87ac6b1392e96b, type: 3}
+      propertyPath: metalHitParticleFX
+      value: 
+      objectReference: {fileID: 2447479886709419262, guid: a478263625162bc4fb788fed4a280bc9, type: 3}
+    - target: {fileID: 7593149073975348146, guid: f1694e0c69f82ac4ca87ac6b1392e96b, type: 3}
+      propertyPath: stoneHitParticleFX
+      value: 
+      objectReference: {fileID: 5710102418808008380, guid: ea8924f7ddfb97d4c9eb2cb26a707c27, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
