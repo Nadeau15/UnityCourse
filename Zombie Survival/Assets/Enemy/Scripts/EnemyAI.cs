@@ -5,8 +5,10 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
-  [SerializeField] Transform target;
   [SerializeField] float chaseRange = 5f;
+  [SerializeField] float rotationSpeed = 5f;
+
+  GameObject target;
 
   NavMeshAgent navMeshAgent;
   Animator enemyAnimator;
@@ -17,11 +19,12 @@ public class EnemyAI : MonoBehaviour
   {
     navMeshAgent = GetComponent<NavMeshAgent>();
     enemyAnimator = GetComponent<Animator>();
+    target = GameObject.FindGameObjectWithTag("Player");
   }
 
  void Update()
   {
-    distanceToTarget = Vector3.Distance(target.position, transform.position);
+    distanceToTarget = Vector3.Distance(target.transform.position, transform.position);
     if (isProvoked) {
       EngageTarget();
     } else if(distanceToTarget < chaseRange) {
@@ -35,6 +38,7 @@ public class EnemyAI : MonoBehaviour
   }
 
   void EngageTarget() {
+    FaceTarget();
     if(distanceToTarget >= navMeshAgent.stoppingDistance) {
       ChaseTarget();
     }
@@ -47,11 +51,20 @@ public class EnemyAI : MonoBehaviour
   void ChaseTarget() {
     enemyAnimator.SetBool("attack", false);
     enemyAnimator.SetTrigger("move");
-    navMeshAgent.SetDestination(target.position);
+    navMeshAgent.SetDestination(target.transform.position);
   }
 
   void AttackTarget() {
     enemyAnimator.SetBool("attack", true);
-    Debug.Log(name + " is attacking " + target.name);
+  }
+
+  void FaceTarget() {
+    Vector3 direction = (target.transform.position - transform.position).normalized;
+    Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+    transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
+  }
+
+  public void OnDamageTaken() {
+    isProvoked = true;
   }
 }

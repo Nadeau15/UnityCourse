@@ -46,6 +46,8 @@ GameObject:
   - component: {fileID: 5237340616460827994}
   - component: {fileID: 1579726108600641830}
   - component: {fileID: 1707193047910756617}
+  - component: {fileID: 6127582781351676598}
+  - component: {fileID: 1518128188655779934}
   m_Layer: 8
   m_Name: PlayerCapsule
   m_TagString: Player
@@ -260,6 +262,32 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &6127582781351676598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5377842989967198890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 453fd1fd362b1c744a5bf9303284205a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHp: 100
+--- !u!114 &1518128188655779934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5377842989967198890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e0783cfae7e1864dbf82b6b2da225b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameOverCanvas: {fileID: 0}
 --- !u!1 &6351126711193008675
 GameObject:
   m_ObjectHideFlags: 0
@@ -451,26 +479,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7653624310334908380, guid: a6d0754d440e3664fb2b639b2a7d08ca, type: 3}
-      propertyPath: sandHitParticleFX
+    - target: {fileID: 5306849307021821227, guid: a6d0754d440e3664fb2b639b2a7d08ca, type: 3}
+      propertyPath: followCamera
       value: 
-      objectReference: {fileID: 1312255355084822, guid: bca9020d2c9c915448fb5263a425faf4, type: 3}
+      objectReference: {fileID: 4330335394246468058}
     - target: {fileID: 7653624310334908380, guid: a6d0754d440e3664fb2b639b2a7d08ca, type: 3}
-      propertyPath: woodHitParticleFX
+      propertyPath: FPCamera
       value: 
-      objectReference: {fileID: 1031560401822814, guid: 3c0b5f221ea995442b9d11dc526de1c0, type: 3}
+      objectReference: {fileID: 798285438270202311}
     - target: {fileID: 7653624310334908380, guid: a6d0754d440e3664fb2b639b2a7d08ca, type: 3}
-      propertyPath: fleshHitParticleFX
-      value: 
-      objectReference: {fileID: 1096893136476370, guid: 24b82347924701148a13c746edfb6b22, type: 3}
+      propertyPath: weaponDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 7653624310334908380, guid: a6d0754d440e3664fb2b639b2a7d08ca, type: 3}
-      propertyPath: metalHitParticleFX
-      value: 
-      objectReference: {fileID: 1892351807075712, guid: 44be68b4fc4366142a9cd1ae1f761ea4, type: 3}
-    - target: {fileID: 7653624310334908380, guid: a6d0754d440e3664fb2b639b2a7d08ca, type: 3}
-      propertyPath: stoneHitParticleFX
-      value: 
-      objectReference: {fileID: 1341869769842038, guid: 8b7a1ffda5bb7474b8fae646c45ce7b4, type: 3}
+      propertyPath: headshotDamageMultiplier
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -543,6 +567,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8762286023885395322, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
   m_PrefabInstance: {fileID: 5008448842791892319}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4330335394246468058 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8762286023885395077, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
+  m_PrefabInstance: {fileID: 5008448842791892319}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8641541381655862818
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -561,7 +590,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.269
+      value: 0.351
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalRotation.w
@@ -618,5 +647,10 @@ PrefabInstance:
 --- !u!4 &798285438270202304 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
+  m_PrefabInstance: {fileID: 8641541381655862818}
+  m_PrefabAsset: {fileID: 0}
+--- !u!20 &798285438270202311 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 9005220659476430821, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
   m_PrefabInstance: {fileID: 8641541381655862818}
   m_PrefabAsset: {fileID: 0}

@@ -62,26 +62,21 @@ public class Weapon : MonoBehaviour
     switch(targetMaterial) {
       case "WoodSurface":
         impact = Instantiate(woodHitParticleFX, targetHit.point, Quaternion.LookRotation(targetHit.normal));
-        Debug.Log(woodHitParticleFX.name);
         break;
       case "MetalSurface":
         impact = Instantiate(metalHitParticleFX, targetHit.point, Quaternion.LookRotation(targetHit.normal));
-        Debug.Log(metalHitParticleFX.name);
         break;
       case "SandSurface":
         impact = Instantiate(sandHitParticleFX, targetHit.point, Quaternion.LookRotation(targetHit.normal));
-        Debug.Log(sandHitParticleFX.name);
         break;
       case "FleshSurface":
         impact = Instantiate(fleshHitParticleFX, targetHit.point, Quaternion.LookRotation(targetHit.normal));
-        Debug.Log(fleshHitParticleFX.name);
         break;
       case "StoneSurface":
         impact = Instantiate(stoneHitParticleFX, targetHit.point, Quaternion.LookRotation(targetHit.normal));
-        Debug.Log(stoneHitParticleFX.name);
         break;
       default:
-        Debug.Log("No case Material for: " + targetMaterial);
+        Debug.LogWarning("No case Material for: " + targetMaterial);
         break;
     }
 

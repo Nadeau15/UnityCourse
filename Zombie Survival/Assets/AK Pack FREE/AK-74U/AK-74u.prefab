@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 33000013164323904}
   - component: {fileID: 23000010966259982}
   - component: {fileID: 7653624310334908380}
+  - component: {fileID: 5306849307021821227}
   m_Layer: 0
   m_Name: AK-74u
   m_TagString: Untagged
@@ -104,6 +105,23 @@ MonoBehaviour:
   weaponDamage: 25
   headshotDamageMultiplier: 2
   muzzleFlash: {fileID: 3609678992162869764}
+  woodHitParticleFX: {fileID: 2299980234402337370, guid: bda64dbfc5f17f04c82d7758b1cd1cad, type: 3}
+  metalHitParticleFX: {fileID: 2447479886709419262, guid: a478263625162bc4fb788fed4a280bc9, type: 3}
+  fleshHitParticleFX: {fileID: 1795255212232503504, guid: 4eb35497ed2c9af478ceb0ea7c92b206, type: 3}
+  sandHitParticleFX: {fileID: 5379503862906819346, guid: 5b52c479df16d1045b3e46cf2f4aa715, type: 3}
+  stoneHitParticleFX: {fileID: 5710102418808008380, guid: ea8924f7ddfb97d4c9eb2cb26a707c27, type: 3}
+--- !u!114 &5306849307021821227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000010118919020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0d6a2e53d868f246b72b0534199e765, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1000012093257676
 GameObject:
   m_ObjectHideFlags: 0
