@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
-{
+{  
   [SerializeField] Camera FPCamera;
   [SerializeField] float range = 100f;
   [SerializeField] float weaponDamage = 25f;
@@ -15,18 +15,45 @@ public class Weapon : MonoBehaviour
   [SerializeField] GameObject fleshHitParticleFX;
   [SerializeField] GameObject sandHitParticleFX;
   [SerializeField] GameObject stoneHitParticleFX;
+  [SerializeField] Ammo ammoSlot;
+  [SerializeField] float rateOfFire = 0.5f;
+  [SerializeField] WeaponType weaponType = WeaponType.Pistol;
 
+  bool canShoot = true;
+
+  void OnEnable() {
+    canShoot = true;
+  }
 
   void Update()
   {
-    if(Input.GetButtonDown("Fire1")) {
-      Shoot();
+    bool input = false;
+
+    switch (weaponType) {
+      case WeaponType.Pistol:
+      case WeaponType.Shotgun:
+      case WeaponType.Sniper:
+        input = Input.GetButtonDown("Fire1");
+        break;
+      case WeaponType.AssaultRifle:
+        input = Input.GetButton("Fire1");
+        break;
+    }
+
+    if(input && ammoSlot.GetAmmoCount(weaponType) > 0 && canShoot) {
+      StartCoroutine(Shoot());
     }
   }
 
-  void Shoot() {
+  IEnumerator Shoot() {
+    canShoot = false;
+
     PlayMuzzleFlash();
     ProcessRaycast();
+    ammoSlot.ReduceAmmoCount(weaponType);
+
+    yield return new WaitForSeconds(rateOfFire);
+    canShoot = true;
   }
 
   void PlayMuzzleFlash() {

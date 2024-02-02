@@ -9,23 +9,21 @@ public class WeaponZoom : MonoBehaviour
   [SerializeField] Camera followCamera;
   [SerializeField] float zoomedOutFOV = 40f;
   [SerializeField] float zoomedInFOV = 25f;
-  [SerializeField] float defaultRotationSpeed = 200f;
-  [SerializeField] float zoomedInRotationSpeed = 100f;
-  PlayerCam playerCam;
+  [SerializeField] float defaultRotationSpeed = 1f;
+  [SerializeField] float zoomedInRotationSpeed = 0.5f;
+  FPSController fPSController;
 
   void Awake() {
-    playerCam = GetComponent<PlayerCam>();
+    fPSController = FindObjectOfType<FPSController>();
   }
 
   void Update() {
     if (Input.GetMouseButton(1)) {
       followCamera.fieldOfView = zoomedInFOV;
-      playerCam.sensitivityX = zoomedInRotationSpeed;
-      playerCam.sensitivityY = zoomedInRotationSpeed;
+      fPSController.lookSensitivity = zoomedInRotationSpeed;
     } else {
       followCamera.fieldOfView = zoomedOutFOV;
-      playerCam.sensitivityX = defaultRotationSpeed;
-      playerCam.sensitivityY = defaultRotationSpeed;
+      fPSController.lookSensitivity = defaultRotationSpeed;
     }
   }
 }

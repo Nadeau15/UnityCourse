@@ -12,7 +12,8 @@ public class DeathHandler : MonoBehaviour
   }
 
   public void HandleDeath() {
-    GetComponent<Movement>().enabled = false;
+    GetComponent<FPSController>().enabled = false;
+    FindObjectOfType<WeaponSwitcher>().enabled = false;
     gameOverCanvas.enabled = true;
     Time.timeScale = 0;
     Cursor.lockState = CursorLockMode.None;
